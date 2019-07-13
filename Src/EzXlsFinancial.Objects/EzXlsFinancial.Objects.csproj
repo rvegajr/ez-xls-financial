@@ -7,6 +7,12 @@
     <Description>A simple library that utilizes NPOI to calculate excel functions exactly as excel does.</Description>
     <Copyright>2019 Noctusoft, Inc</Copyright>
     <Product>EzXlsFinancial</Product>
+    <PackageProjectUrl>https://github.com/rvegajr/ez-xls-financial</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/rvegajr/ez-xls-financial</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>Excel NPV</PackageTags>
+    <PackageReleaseNotes>We can now process NPV calculations exactly as Excel does.</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
