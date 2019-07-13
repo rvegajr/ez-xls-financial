@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>EzXlsFinancial</PackageId>
+    <Authors>Noctusoft, Inc.</Authors>
+    <Description>A simple library that utilizes NPOI to calculate excel functions exactly as excel does.</Description>
+    <Copyright>2019 Noctusoft, Inc</Copyright>
+    <Product>EzXlsFinancial</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NPOI" Version="2.4.1" />
+  </ItemGroup>
+
+</Project>
