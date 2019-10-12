@@ -11,8 +11,10 @@
     <RepositoryUrl>https://github.com/rvegajr/ez-xls-financial</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageTags>Excel NPV</PackageTags>
-    <PackageReleaseNotes>We can now process NPV calculations exactly as Excel does.</PackageReleaseNotes>
+    <PackageReleaseNotes>We can now process NPV calculations exactly as Excel does.  We also can handle more than 38 rows which the release version could not do.  This can now handle 1000 values in the NPV calc.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.2</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
