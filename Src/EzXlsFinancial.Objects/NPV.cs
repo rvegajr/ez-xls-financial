@@ -28,11 +28,11 @@ namespace EzXlsFinancial.Objects
             set
             {
                 rateFormula = value;
-                this.sheet.SetCellFormula(0,3, string.Format("NPV({0},B4:B51)", rateFormula.Replace(NPV.RATE_VAR, "B1")));
             }
         }
 
         private int rowIndex = 0;
+        private int maxRows = 1000;
         public static readonly string RATE_VAR = "{RATE}";
         private void SetupWorksheet()
         {
@@ -48,7 +48,7 @@ namespace EzXlsFinancial.Objects
             row = sheet.CreateRow(rowIndex);
             row.CreateCell(0).SetCellValue("Period");
             row.CreateCell(1).SetCellValue("GCF");
-            for (int i = 1; i < 100; i++)
+            for (int i = 1; i < maxRows; i++)
             {
                 rowIndex++;
                 row = sheet.CreateRow(rowIndex);
@@ -68,13 +68,14 @@ namespace EzXlsFinancial.Objects
         public void Clear()
         {
             sheet.SetCellValue(0, 1, 0.0);
-            for (int i = 3; i < 102; i++)
+            for (int i = 3; i < maxRows+3; i++)
             {
                 sheet.SetCellValue(i, 1, 0.0);
             }
         }
         public double Calculate(double rate, List<double> values)
         {
+            if (values.Count > maxRows) throw new Exception(string.Format("Cannot handle values list over {0}!", values));
             this.Clear();
             sheet.SetCellValue(0, 1, rate);
             var startRow = 3;
@@ -83,6 +84,7 @@ namespace EzXlsFinancial.Objects
                 sheet.SetCellValue(startRow, 1, value);
                 startRow++;
             }
+            this.sheet.SetCellFormula(0, 3, string.Format("NPV({0},B4:B{1})", rateFormula.Replace(NPV.RATE_VAR, "B1"), startRow));
             HSSFFormulaEvaluator.EvaluateAllFormulaCells(workbook);
             var npvValue = sheet.GetCellValue(0, 3, 0d);
             return npvValue;
