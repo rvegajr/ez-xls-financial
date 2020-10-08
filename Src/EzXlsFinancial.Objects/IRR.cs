@@ -10,9 +10,9 @@ using System.IO;
 
 namespace EzXlsFinancial.Objects
 {
-    public class NPV
+    public class IRR
     {
-        public NPV()
+        public IRR()
         {
             SetupWorksheet();
         }
@@ -40,14 +40,14 @@ namespace EzXlsFinancial.Objects
             this.sheet = workbook.CreateSheet("Financial");
             rowIndex = 0;
             var row = sheet.CreateRow(rowIndex);
-            row.CreateCell(0).SetCellValue("Discount Rate");
+            row.CreateCell(0).SetCellValue("Rate");
             row.CreateCell(1).SetCellValue(0);
-            row.CreateCell(2).SetCellValue("PV");
-            row.CreateCell(3).SetCellFormula(string.Format("NPV({0},B4:B51)", RateFormula.Replace(NPV.RATE_VAR, "B1")));
+            row.CreateCell(2).SetCellValue("IRR");
+            row.CreateCell(3).SetCellFormula(string.Format("IRR({0},B4:B51)", RateFormula.Replace(IRR.RATE_VAR, "B1")));
             rowIndex++; rowIndex++;
             row = sheet.CreateRow(rowIndex);
             row.CreateCell(0).SetCellValue("Period");
-            row.CreateCell(1).SetCellValue("GCF");
+            row.CreateCell(1).SetCellValue("Total");
             for (int i = 1; i < maxRows; i++)
             {
                 rowIndex++;
@@ -78,16 +78,16 @@ namespace EzXlsFinancial.Objects
             if (values.Count > maxRows) throw new Exception(string.Format("Cannot handle values list over {0}!", values));
             this.Clear();
             sheet.SetCellValue(0, 1, rate);
-            var startRow = 3;
+            var currRow = 3;
             foreach (var value in values)
             {
-                sheet.SetCellValue(startRow, 1, value);
-                startRow++;
+                sheet.SetCellValue(currRow, 1, value);
+                currRow++;
             }
-            this.sheet.SetCellFormula(0, 3, string.Format("NPV({0},B4:B{1})", rateFormula.Replace(NPV.RATE_VAR, "B1"), startRow));
+            this.sheet.SetCellFormula(0, 3, string.Format("IRR(B4:B{0}, {1})*12", currRow, rateFormula.Replace(IRR.RATE_VAR, "B1")));
             HSSFFormulaEvaluator.EvaluateAllFormulaCells(workbook);
-            var npvValue = sheet.GetCellValue(0, 3, 0d);
-            return npvValue;
+            var irrValue = sheet.GetCellValue(0, 3, 0d);
+            return irrValue;
         }
     }
 }

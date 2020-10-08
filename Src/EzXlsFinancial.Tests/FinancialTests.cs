@@ -75,5 +75,114 @@ namespace EzXlsFinancial.Tests
             /* this will write out the resulting excel file to let you play around with it */
             //xlsFinancial.SaveToFile(@"\\vmware-host\Shared Folders\Downloads\npv_.xls");
         }
+
+        [Fact]
+        public void IRRCalcOk()
+        {
+            var xlsFinancial = new IRR();
+
+            List<double> inputValues = new List<double>();
+            inputValues.Add(0);
+            inputValues.Add(-1571991);
+            inputValues.Add(13100);
+            inputValues.Add(10161);
+            inputValues.Add(13100);
+            inputValues.Add(13100);
+            inputValues.Add(13100);
+            inputValues.Add(13100);
+            inputValues.Add(13100);
+            inputValues.Add(13100);
+            inputValues.Add(18100);
+            inputValues.Add(13100);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(60000);
+            inputValues.Add(0);
+            inputValues.Add(5500);
+            inputValues.Add(0);
+            inputValues.Add(39300);
+            inputValues.Add(0);
+            inputValues.Add(13100);
+            inputValues.Add(0);
+            inputValues.Add(13100);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(13100);
+            inputValues.Add(13100);
+            inputValues.Add(65500);
+            inputValues.Add(99965);
+            inputValues.Add(113085);
+            inputValues.Add(13065);
+            inputValues.Add(13065);
+            inputValues.Add(13065);
+            inputValues.Add(13065);
+            inputValues.Add(13065);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(199950);
+            inputValues.Add(0);
+            inputValues.Add(67015);
+            inputValues.Add(13065);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(-8070);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(-10102);
+            inputValues.Add(-111);
+            inputValues.Add(-17719);
+            inputValues.Add(0);
+            inputValues.Add(-44453);
+            inputValues.Add(-8767);
+            inputValues.Add(0);
+            inputValues.Add(-11988);
+            inputValues.Add(0);
+            inputValues.Add(-7363);
+            inputValues.Add(-1388);
+            inputValues.Add(-26151);
+            inputValues.Add(-19162);
+            inputValues.Add(-15256);
+            inputValues.Add(-23682);
+            inputValues.Add(-5901);
+            inputValues.Add(0);
+            inputValues.Add(-11831);
+            inputValues.Add(0);
+            inputValues.Add(-2253);
+            inputValues.Add(-319);
+            inputValues.Add(0);
+            inputValues.Add(-2153);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(-158);
+            inputValues.Add(-49768);
+            inputValues.Add(-16497);
+            inputValues.Add(-1035);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(-7000);
+            inputValues.Add(-37000);
+            inputValues.Add(1929000);
+            inputValues.Add(-13000);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+            inputValues.Add(0);
+
+            var val = xlsFinancial.Calculate(0.01, inputValues);
+            Assert.True(xlsFinancial.Calculate(0.01, inputValues).ToString("0.00").Equals("8.95"), "IRR with .01 should be 8.95");
+            /* this will write out the resulting excel file to let you play around with it */
+            //xlsFinancial.SaveToFile(@"C:\Temp\irr_TEST.xls");
+        }
     }
 }
