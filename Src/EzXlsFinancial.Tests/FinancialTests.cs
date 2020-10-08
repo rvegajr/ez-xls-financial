@@ -66,14 +66,12 @@ namespace EzXlsFinancial.Tests
 
             var val = xlsFinancial.Calculate(0.20, inputValues);
 
-            xlsFinancial.SaveToFile(@"\\vmware-host\Shared Folders\Downloads\npv_TEST.xls");
-
             Assert.True(xlsFinancial.Calculate(0.22, inputValues).ToString("0.00").Equals("890152.51"), "NPV with .22 not correct 890152.51");
             Assert.True(xlsFinancial.Calculate(0.18, inputValues).ToString("0.00").Equals("932217.54"), "NPV with .18 not correct 932217.54");
             Assert.True(xlsFinancial.Calculate(0.15, inputValues).ToString("0.00").Equals("966142.30"), "NPV with .15 not correct 966142.30");
 
             /* this will write out the resulting excel file to let you play around with it */
-            //xlsFinancial.SaveToFile(@"\\vmware-host\Shared Folders\Downloads\npv_.xls");
+            //xlsFinancial.SaveToFile(@"C:\Temp\npv_.xls");
         }
 
         [Fact]
@@ -180,7 +178,7 @@ namespace EzXlsFinancial.Tests
             inputValues.Add(0);
 
             var val = xlsFinancial.Calculate(0.01, inputValues);
-            Assert.True(xlsFinancial.Calculate(0.01, inputValues).ToString("0.00").Equals("8.95"), "IRR with .01 should be 8.95");
+            Assert.True(xlsFinancial.Calculate(0.01, inputValues).ToString("0.00%").Equals("8.95%"), "IRR with .01 should be 8.95%");
             /* this will write out the resulting excel file to let you play around with it */
             //xlsFinancial.SaveToFile(@"C:\Temp\irr_TEST.xls");
         }
