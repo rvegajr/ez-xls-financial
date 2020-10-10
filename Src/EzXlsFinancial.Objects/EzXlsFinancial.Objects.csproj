@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net461;net472;net48;netcoreapp2.2;netcoreapp3.1;netstandard2.0;netstandard2.1</TargetFrameworks>
     <PackageId>EzXlsFinancial</PackageId>
     <Authors>Noctusoft, Inc.</Authors>
     <Description>A simple library that utilizes NPOI to calculate excel functions exactly as excel does.</Description>
@@ -10,16 +10,16 @@
     <PackageProjectUrl>https://github.com/rvegajr/ez-xls-financial</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rvegajr/ez-xls-financial</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
-    <PackageTags>Excel NPV</PackageTags>
-    <PackageReleaseNotes>We can now process NPV calculations exactly as Excel does.  We also can handle more than 38 rows which the release version could not do.  This can now handle 1000 values in the NPV calc.</PackageReleaseNotes>
+    <PackageTags>Excel NPV IRR</PackageTags>
+    <PackageReleaseNotes>We can now process NPV and IRR calculations exactly as Excel does.  This can now handle 1000 values in the NPV and IRR calc. Added multi target.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FastMember" Version="1.5.0" />
-    <PackageReference Include="NPOI" Version="2.4.1" />
+    <PackageReference Include="NPOI" Version="2.5.1" />
   </ItemGroup>
 
 </Project>
